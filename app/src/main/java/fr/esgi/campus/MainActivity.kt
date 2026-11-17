@@ -1,6 +1,7 @@
 package fr.esgi.campus
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.esgi.campus.ui.theme.CampusTheme
+
+private const val TAG = "Campus"
 
 data class Event(
     val id: Int,
@@ -77,10 +80,12 @@ val sampleEvents = listOf(
 @Composable
 fun EventCard(
     event: Event,
+    onClick: () -> Unit,
     onBook: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
+        onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
@@ -113,7 +118,8 @@ fun EventListScreen(events: List<Event>) {
             items(events, key = { it.id }) { event ->
                 EventCard(
                     event = event,
-                    onBook = {}
+                    onClick = { Log.d(TAG, "Clic sur l'événement ${event.id}") },
+                    onBook = { Log.d(TAG, "Réservation de l'événement ${event.id}") }
                 )
             }
         }
@@ -160,6 +166,7 @@ fun EventCardPreview() {
                 location = "Casino d'Enghien",
                 capacity = 0
             ),
+            onClick = {},
             onBook = {}
         )
     }
