@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -107,6 +108,8 @@ fun EventCard(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EventListScreen(events: List<Event>) {
+    val categories = events.map { it.category }.distinct()
+
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(text = "Campus") })
@@ -115,6 +118,16 @@ fun EventListScreen(events: List<Event>) {
         LazyColumn(
             contentPadding = innerPadding
         ) {
+            item {
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(categories) { category ->
+                        Text(text = category)
+                    }
+                }
+            }
             items(events, key = { it.id }) { event ->
                 EventCard(
                     event = event,
