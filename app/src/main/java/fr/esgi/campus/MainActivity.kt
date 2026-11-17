@@ -13,6 +13,52 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import fr.esgi.campus.ui.theme.CampusTheme
 
+data class Event(
+    val id: Int,
+    val title: String,
+    val category: String,
+    val location: String?,
+    val capacity: Int
+)
+
+val sampleEvents = listOf(
+    Event(
+        id = 1,
+        title = "Conférence brainrot",
+        category = "Tech",
+        location = "Springfield",
+        capacity = 50
+    ),
+    Event(
+        id = 2,
+        title = "Tournoi Beyblade",
+        category = "Loisirs",
+        location = null,
+        capacity = 32
+    ),
+    Event(
+        id = 3,
+        title = "Atelier gambling",
+        category = "Carrière",
+        location = "Casino d'Enghien",
+        capacity = 0
+    ),
+    Event(
+        id = 4,
+        title = "Futchampion",
+        category = "Skills",
+        location = "Lab Skills",
+        capacity = 20
+    ),
+    Event(
+        id = 5,
+        title = "Soirée Babinski",
+        category = "Vie étudiante",
+        location = "Salle Babinski",
+        capacity = 100
+    )
+)
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
