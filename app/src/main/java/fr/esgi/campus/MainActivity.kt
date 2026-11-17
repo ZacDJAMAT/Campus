@@ -37,7 +37,8 @@ data class Event(
     val title: String,
     val category: String,
     val location: String?,
-    val capacity: Int
+    val capacity: Int,
+    val description: String
 )
 
 val sampleEvents = listOf(
@@ -46,35 +47,40 @@ val sampleEvents = listOf(
         title = "Conférence brainrot",
         category = "Tech",
         location = "Springfield",
-        capacity = 50
+        capacity = 50,
+        description = "Une conférence sur les nouvelles tendances technologiques."
     ),
     Event(
         id = 2,
         title = "Tournoi Beyblade",
         category = "Loisirs",
         location = null,
-        capacity = 32
+        capacity = 32,
+        description = "Un tournoi convivial autour des toupies Beyblade."
     ),
     Event(
         id = 3,
         title = "Atelier gambling",
         category = "Carrière",
         location = "Casino d'Enghien",
-        capacity = 0
+        capacity = 0,
+        description = "Un atelier de découverte des mécanismes du gambling."
     ),
     Event(
         id = 4,
         title = "Futchampion",
         category = "Skills",
         location = "Lab Skills",
-        capacity = 20
+        capacity = 20,
+        description = "Un atelier pratique pour développer ses compétences."
     ),
     Event(
         id = 5,
         title = "Soirée Babinski",
         category = "Vie étudiante",
         location = "Salle Babinski",
-        capacity = 100
+        capacity = 100,
+        description = "Une soirée pour se retrouver et partager un moment convivial."
     )
 )
 
@@ -177,7 +183,8 @@ fun EventCardPreview() {
                 title = "Atelier gambling",
                 category = "Carrière",
                 location = "Casino d'Enghien",
-                capacity = 0
+                capacity = 0,
+                description = "Un atelier de découverte des mécanismes du gambling."
             ),
             onClick = {},
             onBook = {}
