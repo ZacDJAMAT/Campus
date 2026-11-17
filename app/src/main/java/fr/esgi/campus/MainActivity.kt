@@ -127,3 +127,20 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun EventCardPreview() {
+    CampusTheme {
+        EventCard(
+            event = Event(
+                id = 3,
+                title = "Atelier gambling",
+                category = "Carrière",
+                location = "Casino d'Enghien",
+                capacity = 0
+            ),
+            onBook = {}
+        )
+    }
+}
