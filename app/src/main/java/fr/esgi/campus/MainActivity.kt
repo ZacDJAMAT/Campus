@@ -1,5 +1,6 @@
 package fr.esgi.campus
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -215,7 +216,7 @@ fun GreetingPreview() {
 @Preview(showBackground = true)
 @Composable
 fun EventCardPreview() {
-    CampusTheme {
+    CampusTheme(dynamicColor = false) {
         EventCard(
             event = Event(
                 id = 3,
@@ -228,5 +229,37 @@ fun EventCardPreview() {
             onClick = {},
             onBook = {}
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EventListLightPreview() {
+    CampusTheme(darkTheme = false, dynamicColor = false) {
+        EventListScreen(events = sampleEvents)
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun EventListDarkPreview() {
+    CampusTheme(darkTheme = true, dynamicColor = false) {
+        EventListScreen(events = sampleEvents)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EventDetailLightPreview() {
+    CampusTheme(darkTheme = false, dynamicColor = false) {
+        EventDetailScreen(event = sampleEvents.first(), onBook = {})
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun EventDetailDarkPreview() {
+    CampusTheme(darkTheme = true, dynamicColor = false) {
+        EventDetailScreen(event = sampleEvents.first(), onBook = {})
     }
 }
