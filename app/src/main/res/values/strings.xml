@@ -4,8 +4,7 @@
     <string name="event_book">Réserver</string>
     <string name="campus_title">Campus</string>
     <plurals name="available_seats">
-        <item quantity="zero">Aucune place disponible</item>
-        <item quantity="one">1 place disponible</item>
+        <item quantity="one">%d place disponible</item>
         <item quantity="other">%d places disponibles</item>
     </plurals>
 </resources>
