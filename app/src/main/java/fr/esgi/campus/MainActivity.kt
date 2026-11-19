@@ -30,6 +30,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import fr.esgi.campus.ui.theme.CampusTheme
@@ -104,12 +106,13 @@ fun EventCard(
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = event.title, style = MaterialTheme.typography.titleLarge)
             Text(text = event.category)
-            Text(text = event.location ?: "Lieu à confirmer")
+            Text(text = event.location ?: stringResource(R.string.event_location_unknown))
+            Text(text = pluralStringResource(R.plurals.available_seats, event.capacity, event.capacity))
             Button(
                 onClick = onBook,
                 enabled = event.capacity > 0
             ) {
-                Text(text = "Réserver")
+                Text(text = stringResource(R.string.event_book))
             }
         }
     }
@@ -122,7 +125,7 @@ fun EventListScreen(events: List<Event>) {
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = "Campus") })
+            TopAppBar(title = { Text(text = stringResource(R.string.campus_title)) })
         }
     ) { innerPadding ->
         LazyColumn(
@@ -169,8 +172,9 @@ fun EventDetailScreen(
         )
         Text(text = event.title, style = MaterialTheme.typography.headlineSmall)
         Text(text = event.category)
-        Text(text = event.location ?: "Lieu à confirmer")
+        Text(text = event.location ?: stringResource(R.string.event_location_unknown))
         Text(text = event.description)
+        Text(text = pluralStringResource(R.plurals.available_seats, event.capacity, event.capacity))
         Button(
             onClick = onBook,
             enabled = event.capacity > 0
