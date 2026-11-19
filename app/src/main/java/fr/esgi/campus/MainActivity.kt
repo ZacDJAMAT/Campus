@@ -268,3 +268,19 @@ fun EventDetailDarkPreview() {
         EventDetailScreen(event = sampleEvents.first(), onBook = {})
     }
 }
+
+@Preview(showBackground = true, fontScale = 2f)
+@Composable
+fun EventListFont200Preview() {
+    CampusTheme(dynamicColor = false) {
+        EventListScreen(events = sampleEvents)
+    }
+}
+
+@Preview(showBackground = true, fontScale = 2f)
+@Composable
+fun EventDetailFont200Preview() {
+    CampusTheme(dynamicColor = false) {
+        EventDetailScreen(event = sampleEvents.first(), onBook = {})
+    }
+}
